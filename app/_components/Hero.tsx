@@ -26,10 +26,7 @@ const Hero = () => {
               </h2>
 
               <p className="mt-4 text-gray-600">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut
-                qui hic atque tenetur quis eius quos ea neque sunt, accusantium
-                soluta minus veniam tempora deserunt? Molestiae eius quidem quam
-                repellat.
+              DoctorFinderPro revolutionizes healthcare access, offering a diverse array of doctors on one platform, from primary care physicians to specialized surgeons. Patients effortlessly find the perfect match for their needs, ensuring seamless healthcare experiences with confidence and convenience.
               </p>
               <Button className="mt-10">Explore Now</Button>
             </div>
