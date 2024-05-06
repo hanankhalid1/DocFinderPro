@@ -7,5 +7,7 @@ export default function Home() {
     <Hero/>
     {/* Search Bar + Category */}
     <CategorySearch/>
+    
+    {/* Popular Doctors List */}
   </div>;
 }
