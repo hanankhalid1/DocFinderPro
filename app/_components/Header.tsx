@@ -8,7 +8,7 @@ const Header = () => {
   const Menu = [
     {
       id: 1,
-      name: "home",
+      name: "Home",
       path: "/",
     },
     {

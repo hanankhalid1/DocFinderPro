@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
+import CategoryList from "./_components/CategoryList";
 
-const layout = ({children} : any) => {
+const layout = ({ children }: any) => {
   return (
-    <div>
-      {children}
+    <div className="grid grid-cols-4">
+      <div className="hidden md:block">
+        {/* Category */}
+        <CategoryList />
+      </div>
+      <div className="col-span-3">{children}</div>
     </div>
-  )
-}
+  );
+};
 
-export default layout
+export default layout;
