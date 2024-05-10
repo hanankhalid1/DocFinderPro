@@ -16,11 +16,12 @@ import { usePathname } from "next/navigation";
 
 const CategoryList = () => {
   const [categoryList, setCategoryList] = useState([]);
-  const params = usePathname();
-  const category = params.split("/")[2];
+  const params = decodeURIComponent(usePathname().replace(/\+/g, ' '));
+  const category = params.split('/')[2].replace(/[%\d]/g, '');
 
   useEffect(() => {
     getCategoriesList();
+    console.log(category);
   }, []);
 
   const getCategoriesList = () => {
@@ -42,7 +43,7 @@ const CategoryList = () => {
               categoryList.map((item, index) => (
                 <CommandItem key={index}>
                   <Link
-                    href={"/search/"+item.attributes.Name}
+                    href={'/search/'+item?.attributes?.Name}
                     className={`p-2 flex gap-2 text-[14px] text-blue-600 rounded-md 
                     items-center cursor-pointer w-full ${
                       category == item.attributes.Name && "bg-blue-100"

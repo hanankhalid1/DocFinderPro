@@ -8,7 +8,7 @@ const layout = ({ children }: any) => {
         {/* Category */}
         <CategoryList />
       </div>
-      <div className="col-span-3">{children}</div>
+      <div className="col-span-4 md:col-span-3">{children}</div>
     </div>
   );
 };
