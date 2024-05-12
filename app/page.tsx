@@ -19,6 +19,7 @@ export default function Home() {
   }
   return <div>
     {/* Hero Section */}
+    {/* Hanan1434* */}
     <Hero/>
     {/* Search Bar + Category */}
     <CategorySearch/>
