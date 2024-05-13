@@ -29,7 +29,7 @@ const Header = () => {
     {
       id: 3,
       name: "Contact Us",
-      path: "/contact", // corrected typo in path
+      path: "/contact",
     },
   ];
 

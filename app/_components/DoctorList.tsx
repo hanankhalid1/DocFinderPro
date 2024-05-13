@@ -1,9 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Divide } from "lucide-react";
 
-const DoctorList = ({ doctorList , heading='Popular Doctor' }) => {
+const DoctorList = ({ doctorList, heading = "Popular Doctor" }) => {
   return (
     <div className="mb-10 px-10">
       <h2 className="font-bold text-xl">{heading}</h2>
@@ -32,10 +31,10 @@ const DoctorList = ({ doctorList , heading='Popular Doctor' }) => {
                   <h2 className="text-gray-500 text-sm">
                     {doctor.attributes?.Address}
                   </h2>
-                  <Link href= {'/details/'+doctor?.id} className="w-full">
-                  <h2 className="p-2 px-3 border border-primary text-primary rounded-full w-full text-center text-sm mt-2 cursor-pointer hover:bg-primary hover:text-white">
-                    Book Now
-                  </h2>
+                  <Link href={'/detail/'+doctor?.id} className="w-full">
+                    <h2 className="p-2 px-3 border border-primary text-primary rounded-full w-full text-center text-sm mt-2 cursor-pointer hover:bg-primary hover:text-white">
+                      Book Now
+                    </h2>
                   </Link>
                 </div>
               </div>
@@ -45,9 +44,7 @@ const DoctorList = ({ doctorList , heading='Popular Doctor' }) => {
               <div
                 className="h-[220px] bg-slate-200 w-full rounded-lg animate-pulse"
                 key={index}
-              >
-              
-              </div>
+              ></div>
             ))}
       </div>
     </div>
