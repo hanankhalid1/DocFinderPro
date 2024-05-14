@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { GraduationCap, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import BookAppointment from "./BookAppointment";
 
 const DoctorDetail = ({ doctor }: any) => {
   // soical Media Iocns and urls
@@ -80,7 +81,7 @@ const DoctorDetail = ({ doctor }: any) => {
               </Link>
             ))}
           </div>
-          <Button className="mt-3 rounded-full">Book Appointment</Button>
+          <BookAppointment/>
         </div>
         {/* about doctor */}
       </div>
