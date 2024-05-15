@@ -13,12 +13,16 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { CalendarDays, Clock } from "lucide-react";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import GlobalApi from "@/app/_utils/GlobalApi";
+import { toast } from "sonner";
 
-const BookAppointment = () => {
+const BookAppointment = ({ doctor }: any) => {
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [timeSlot, setTimeSlot] = useState<any[]>([]);
-  const [selectedSlot, setSlelectedSlot] = useState();
-  const [note  , setNote] = useState('');
+  const [selectedSlot, setSelectedSlot] = useState<string>(" ");
+  const [note, setNote] = useState<string>(" ");
+  const { user } = useKindeBrowserClient();
 
   useEffect(() => {
     getTime();
@@ -36,9 +40,29 @@ const BookAppointment = () => {
     }
     setTimeSlot(timeList);
   };
-  const isPastDay=(day : any)=>{
+  const saveBooking = () => {
+    const data = {
+      data: {
+        UserName: user?.given_name + "" + user?.family_name,
+        Email: user?.email,
+        Time: selectedSlot,
+        Date: date,
+        doctor: doctor.id,
+        Note: note,
+      },
+    };
+    // console.log("Note is here " , note);
+    GlobalApi.bookAppointment(data).then((res: any) => {
+      console.log(res);
+      if (res) {
+        toast("Booking confirmation has been sent to your email");
+        setNote(" ");
+      }
+    });
+  };
+  const isPastDay = (day: any) => {
     return day < new Date();
-}
+  };
   return (
     <Dialog>
       <DialogTrigger>
@@ -72,7 +96,7 @@ const BookAppointment = () => {
                 <div className="grid grid-cols-3 gap-2 border rounded-lg p-3">
                   {timeSlot?.map((item, index) => (
                     <h2
-                      onClick={() => setSlelectedSlot(item.time)}
+                      onClick={() => setSelectedSlot(item.time)}
                       key={index}
                       className={`p-2 border text-center cursor-pointer hover:bg-primary hover:text-white rounded-full ${
                         item.time === selectedSlot
@@ -89,21 +113,28 @@ const BookAppointment = () => {
           </DialogDescription>
         </DialogHeader>
         <textarea
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-            className="border rounded-md p-2 w-full"
-            placeholder="Add a note..."
-          />
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
+          className="border rounded-md p-2 w-full"
+          placeholder="Add a note..."
+        />
         <DialogFooter className="sm:justify-end">
-       
           <DialogClose asChild>
             <>
-            <Button type="button" className="text-red-500 border-red-500" variant="outline">
-              Close
-            </Button>
-            <Button type="button" disabled = {!(date&& selectedSlot)}>
-              Confirm
-            </Button>
+              <Button
+                type="button"
+                className="text-red-500 border-red-500"
+                variant="outline"
+              >
+                Close
+              </Button>
+              <Button
+                type="button"
+                disabled={!(date && selectedSlot)}
+                onClick={() => saveBooking()}
+              >
+                Confirm
+              </Button>
             </>
           </DialogClose>
         </DialogFooter>
