@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { DialogFooter } from "@/components/ui/dialog";
@@ -20,8 +19,8 @@ import { toast } from "sonner";
 const BookAppointment = ({ doctor }: any) => {
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [timeSlot, setTimeSlot] = useState<any[]>([]);
-  const [selectedSlot, setSelectedSlot] = useState<string>(" ");
-  const [note, setNote] = useState<string>(" ");
+  const [selectedSlot, setSelectedSlot] = useState<string>("");
+  const [note, setNote] = useState<string>("");
   const { user } = useKindeBrowserClient();
 
   useEffect(() => {
@@ -40,29 +39,43 @@ const BookAppointment = ({ doctor }: any) => {
     }
     setTimeSlot(timeList);
   };
-  const saveBooking = () => {
+
+  const saveBooking = async () => {
     const data = {
       data: {
-        UserName: user?.given_name + "" + user?.family_name,
+        UserName: `${user?.given_name} ${user?.family_name}`,
         Email: user?.email,
         Time: selectedSlot,
         Date: date,
-        doctor: doctor.id,
+        doctors: doctor?.id,
         Note: note,
       },
     };
-    // console.log("Note is here " , note);
-    GlobalApi.bookAppointment(data).then((res: any) => {
-      console.log(res);
+
+    console.log("Sending booking data:", data);
+
+    try {
+      const res = await GlobalApi.bookAppointment(data);
+      console.log("API response:", res);
       if (res) {
+        GlobalApi.sendEmail(data).then((res) => {
+          console.log("Email response:", res);
+        });
         toast("Booking confirmation has been sent to your email");
-        setNote(" ");
+        setNote("");
+      } else {
+        toast("Failed to book appointment. Please try again.");
       }
-    });
+    } catch (error) {
+      console.error("Error booking appointment:", error);
+      toast("An error occurred. Please try again later.");
+    }
   };
+
   const isPastDay = (day: any) => {
     return day < new Date();
   };
+
   return (
     <Dialog>
       <DialogTrigger>

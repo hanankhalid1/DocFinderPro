@@ -57,15 +57,14 @@ const Header = () => {
         <div className="flex items-center">
           <Popover>
             <PopoverTrigger><Image
-            src={user?.picture}
+            src={user?.picture || ""}
             alt="Profile Picture"
             height={50}
             width={50}
             className="rounded-full"
           /></PopoverTrigger>
             <PopoverContent className="w-44"><ul className="flex flex-col gap-2">
-              <li className="cursor-pointer hover: bg-slate-100 p-2 rounded-md">Profile</li>
-              <li className="cursor-pointer bg-slate-100 p-2 rounded-md">My Booking</li>
+              <Link href={'/my-booking'} className="cursor-pointer bg-slate-100 p-2 rounded-md">My Booking</Link>
               <li className="cursor-pointer bg-slate-100 p-2 rounded-md"><LogoutLink>Logout</LogoutLink></li>
               </ul></PopoverContent>
           </Popover>

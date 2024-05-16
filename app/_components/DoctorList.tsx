@@ -8,7 +8,7 @@ const DoctorList = ({ doctorList, heading = "Popular Doctor" }) => {
       <h2 className="font-bold text-xl">{heading}</h2>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-7 mt-4 lg:grid-cols-4">
         {doctorList.length > 0
-          ? doctorList.map((doctor, index) => (
+          ? doctorList.map((doctor : any, index : any) => (
               <div
                 className="border-[1px] rounded-lg p-3 hover:cursor-pointer hover:border-primary hover:shadow-sm transition-all ease-in-out"
                 key={index}
