@@ -64,8 +64,8 @@ const Header = () => {
             className="rounded-full"
           /></PopoverTrigger>
             <PopoverContent className="w-44"><ul className="flex flex-col gap-2">
-              <Link href={'/my-booking'} className="cursor-pointer bg-slate-100 p-2 rounded-md">My Booking</Link>
-              <li className="cursor-pointer bg-slate-100 p-2 rounded-md"><LogoutLink>Logout</LogoutLink></li>
+              <Link href={'/my-booking'} className="cursor-pointer bg-slate-100 p-2 rounded-md hover:bg-blue-500 hover:text-white">My Booking</Link>
+              <li className="cursor-pointer bg-slate-100 p-2 rounded-md hover:bg-blue-500 hover:text-white"><LogoutLink>Logout</LogoutLink></li>
               </ul></PopoverContent>
           </Popover>
 
