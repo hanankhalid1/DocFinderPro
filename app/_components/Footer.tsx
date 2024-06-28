@@ -81,7 +81,7 @@ const Footer = () => {
                 href="https://www.facebook.com/mian.hannan.73"
                 rel="noreferrer"
                 target="_blank"
-                className="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-blue-700/75"
               >
                 <span className="sr-only">Facebook</span>
                 <svg
@@ -104,7 +104,7 @@ const Footer = () => {
                 href="https://www.instagram.com/hanank.1/"
                 rel="noreferrer"
                 target="_blank"
-                className="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-rose-700/75"
               >
                 <span className="sr-only">Instagram</span>
                 <svg
@@ -127,7 +127,7 @@ const Footer = () => {
                 href="https://twitter.com/Hkhalid1434"
                 rel="noreferrer"
                 target="_blank"
-                className="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-blue-700/75"
               >
                 <span className="sr-only">Twitter</span>
                 <svg

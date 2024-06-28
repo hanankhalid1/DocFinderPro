@@ -41,7 +41,7 @@ const CategorySearch = () => {
       <div className="grid grid-cols-3 mt-5 md:grid-cols-4 lg:grid-cols-6">
         {categoryList.length > 0
           ? categoryList.map(
-              (item, index) =>
+              (item : any, index) =>
                 index < 12 && (
                   <Link
                   href={'/search/'+item.attributes.Name}
